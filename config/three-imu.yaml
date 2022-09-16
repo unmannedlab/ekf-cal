@@ -1,0 +1,79 @@
+
+/EkfCalNode:
+    ros__parameters:
+        IMU_list:
+            - vn300
+            - vn100
+            - wheeltec
+
+        Camera_list:
+            - dummy_cam_1
+            - dummy_cam_2
+
+        LIDAR_list:
+            - dummy_lidar_1
+            - dummy_lidar_2
+
+
+        IMUs:
+            vn300:
+                BaseSensor: True
+                Intrinsic: False
+                Rate: 400.0
+                Topic: "/vn300/imu_uncompensated"
+
+            vn100:
+                BaseSensor: False
+                Intrinsic: True
+                Rate: 100.0
+                Topic: "/vn100/imu_uncompensated"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                AccBiasInit: [0.0, 0.0, 0.0]
+                OmgBiasInit: [0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+            
+            wheeltec:
+                BaseSensor: False
+                Intrinsic: True
+                Rate: 100.0
+                Topic: "/imu"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                AccBiasInit: [0.0, 0.0, 0.0]
+                OmgBiasInit: [0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+
+        Cameras:
+            dummy_cam_1:
+                Intrinsic: False
+                Rate: 1.0
+                Topic:  "dummy_cam_1"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+
+            dummy_cam_2:
+                Intrinsic: False
+                Rate: 1.0
+                Topic:  "dummy_cam_2"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+
+
+        LIDARs:
+            dummy_lidar_1:
+                Rate: 1.0
+                Topic:  "dummy_lidar_1"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+
+            dummy_lidar_2:
+                Rate: 1.0
+                Topic:  "dummy_lidar_2"
+                PosOffInit:  [0.0, 0.0, 0.0]
+                AngOffInit: [1.0, 0.0, 0.0, 0.0]
+                VarInit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+

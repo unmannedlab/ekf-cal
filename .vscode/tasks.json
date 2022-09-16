@@ -1,0 +1,105 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // Build tasks
+        {
+            "label": "build ekf_cal",
+            "detail": "Build ekf_cal package",
+            "type": "shell",
+            "command": "colcon build --symlink-install --packages-select ekf_cal --cmake-args '-DCMAKE_EXPORT_COMPILE_COMMANDS=On'",
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        {
+            "label": "build coverage",
+            "detail": "Build ekf_cal package with covereage symbols",
+            "type": "shell",
+            "command": "colcon build --symlink-install --packages-select ekf_cal --cmake-args -DCMAKE_C_FLAGS='--coverage' -DCMAKE_CXX_FLAGS='--coverage'",
+            "group": "build",
+            "problemMatcher": "$gcc",
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        // Testing Tasks
+        {
+            "label": "all tests",
+            "detail": "Run all unit tests and static analysis.",
+            "type": "shell",
+            "command": "colcon test --packages-select ekf_cal --event-handlers console_direct+",
+            "group": "test",
+            "dependsOn": "build ekf_cal",
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        {
+            "label": "test coverage",
+            "detail": "Build ekf_cal package with covereage symbols",
+            "type": "shell",
+            "command": "colcon test --packages-select ekf_cal --pytest-with-coverage --pytest-args --cov-report=term --event-handlers console_direct+",
+            "group": "test",
+            "problemMatcher": "$gcc",
+            "dependsOn": "build coverage",
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        {
+            "label": "report coverage",
+            "detail": "Build ekf_cal package with covereage symbols",
+            "type": "shell",
+            "command": "colcon lcov-result --packages-select ekf_cal --filter '*/test/*'",
+            "group": "test",
+            "problemMatcher": "$gcc",
+            "dependsOn": "test coverage",
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        {
+            "label": "doxygen",
+            "detail": "Build ekf_cal documentation",
+            "type": "shell",
+            "command": "doxygen .doxyfile",
+            "group": "test",
+            "problemMatcher": "$gcc",
+            "dependsOn": "report coverage",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+        },
+        // Debug Tasks
+        {
+            "label": "debug ekf_cal",
+            "detail": "Build ekf_cal package with debug symbols",
+            "type": "shell",
+            "command": "colcon build --symlink-install --packages-select ekf_cal --cmake-args '-DCMAKE_BUILD_TYPE=Debug'",
+            "group": "build",
+            "problemMatcher": "$gcc",
+            "options": {
+                "cwd": "${workspaceFolder}/../../"
+            },
+        },
+        // Source workspace
+        {
+            "label": "source-foxy",
+            "detail": "Sources the current workspace with bash",
+            "type": "shell",
+            "command": "source ${workspaceFolder}/../../install/setup.bash",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": "$gcc"
+        },
+    ],
+}

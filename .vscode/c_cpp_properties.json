@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "ROS",
+            "includePath": [
+                "/opt/ros/foxy/include",
+                "/usr/include/**",
+                "/usr/local/include/**",
+                "/usr/src/googletest",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/test"
+            ]
+        }
+    ],
+    "version": 4
+}

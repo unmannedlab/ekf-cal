@@ -1,0 +1,34 @@
+{
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        100
+    ],
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ],
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+    "[cpp]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    "cSpell.words": [
+        "CUSTOMASSERTIONS",
+        "EKFCALNODE",
+        "EKFHEALTHNODE",
+        "EKFVIZNODE",
+        "htmlonly",
+        "MATHHELPER",
+        "TYPEHELPER",
+        "VIZNODE"
+    ],
+    "terminal.integrated.scrollback": 5000,
+    "cmake.buildDirectory": "${workspaceFolder}/../../build/${workspaceFolderBasename}"
+}
